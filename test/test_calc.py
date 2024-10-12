@@ -12,7 +12,7 @@ Detect = tuple[int, int, int, int]
 def calc_longterm_heatmap_orig(
     detects: list[Detect], shape: tuple[int, int]
 ) -> np.ndarray:
-    """Testing comparison"""
+    """Python version for testing comparison"""
     heatmap = np.zeros(shape[:2], dtype=np.int32)
     for detect in detects:
         box = detect

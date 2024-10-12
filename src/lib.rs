@@ -1,8 +1,20 @@
 use pyo3::prelude::*;
 
+/// Calculates a long-term heatmap based on the provided bounding boxes and shape.
+///
+/// # Arguments
+/// * `boxes` - A vector of tuples representing bounding boxes. Each tuple contains four integers
+/// (x1, y1, x2, y2).
+/// * `shape` - A tuple representing the shape of the heatmap (height, width).
+///
+/// # Returns
+/// A 2D vector representing the heatmap.
 #[pyfunction]
 fn calc_longterm_heatmap(boxes: Vec<(i32, i32, i32, i32)>, shape: (i32, i32)) -> Vec<Vec<i32>> {
-    let mut heatmap: Vec<Vec<i32>> = vec![vec![0; shape.1 as usize]; shape.0 as usize];
+    let width = shape.1 as usize;
+    let height = shape.0 as usize;
+    // NOTE: This is to avoid nested vectors
+    let mut heatmap: Vec<i32> = vec![0; width * height];
     println!("Calculate heatmap for shape {:?}", shape);
 
     for detect in boxes {
@@ -27,13 +39,16 @@ fn calc_longterm_heatmap(boxes: Vec<(i32, i32, i32, i32)>, shape: (i32, i32)) ->
         for y in y_min..=y_max {
             for x in x_min..=x_max {
                 if (x - center.0).pow(2) + (y - center.1).pow(2) <= radius_squared {
-                    heatmap[y as usize][x as usize] += 2;
+                    let index = (y as usize) * width + (x as usize);
+                    heatmap[index] += 2;
                 }
             }
         }
     }
 
-    heatmap
+    (0..height)
+        .map(|i| heatmap[i * width..(i + 1) * width].to_vec())
+        .collect()
 }
 
 #[pymodule]

@@ -1,24 +1,19 @@
 # heatmapcalc
 
-`heatmapcalc` is a Python package that provides a high-performance heatmap
-calculation function implemented in Rust. This package leverages the power of
-Rust for computationally intensive tasks while providing a simple and
-easy-to-use Python interface.
+`heatmapcalc` is a minimalistic python package that provides a fast function to
+add circles to a numpy array, based on a list of bounding boxes.
 
-## Features
-
-- Efficient heatmap calculation using Rust
-- Simple Python wrapper for easy integration
+It is written in Rust for performance.
 
 ## Installation
 
-You can then install the package using `pip`:
+Install with `pip`:
 
 ```sh
 pip install heatmapcalc
 ```
 
-If you have `setuptools` installed, you can also install the package using
+With Rust installed, you can build the package from source:
 
 ```sh
 pip install .
@@ -26,20 +21,25 @@ pip install .
 
 ## Usage
 
-Here is an example of how to use the `heatmapcalc` package:
+Here is a simple example:
 
 ```python
-import numpy as np
 from heatmapcalc import heatmapcalc
 
-# Example detections: list of tuples (x1, y1, x2, y2)
-detections = [(10, 10, 20, 20), (15, 15, 25, 25)]
+# Example boxes: list of tuples (x1, y1, x2, y2)
+boxes = [
+    (10, 300, 100, 600),
+    (150, 300, 300, 600),
+    (250, 215, 450, 425),
+    (430, 215, 550, 425),
+]
 
 # Shape of the heatmap
-shape = (100, 100)
+shape = (600, 800)
 
-# Calculate the heatmap
-heatmap = heatmapcalc(detections, shape)
+# Calculate the heatmap, an np.ndarray of shape (600, 800)
+heatmap = heatmapcalc(boxes, shape)
+```
 
-# Display the heatmap
-print(heatmap)
+This can now be used to visualize it and overlay it on an image.
+This is shown in [the example script](examples/simple.py).
