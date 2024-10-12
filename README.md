@@ -43,3 +43,11 @@ heatmap = heatmapcalc(boxes, shape)
 
 This can now be used to visualize it and overlay it on an image.
 This is shown in [the example script](examples/simple.py).
+
+## Development
+
+- _Deploy_: To deploy on PyPi, trigger the [CI](.github/workflows/CI.yml)
+workflow on GitHub with the latest commit tag. The workflow builds and uploads
+the wheels for Linux and MacOS.
+- _Test_: Test with `pytest`.
+

@@ -22,7 +22,7 @@ def heatmapcalc(
         raise ValueError("Invalid input")
     elif all(isinstance(c, int) for coords in detects for c in coords):
         boxes = detects  # pyright: ignore[reportAssignmentType]
-    elif all(isinstance(c, (int, float)) for coords in detects for c in coords):
+    elif all(isinstance(c, (float, int)) for coords in detects for c in coords):
         boxes = [(int(d[0]), int(d[1]), int(d[2]), int(d[3])) for d in detects]
     else:
         raise ValueError("Invalid input")
