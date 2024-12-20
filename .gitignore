@@ -11,3 +11,4 @@ wheels/
 .venv
 .archiv
 target
+.pdb-pyhist

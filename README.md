@@ -37,7 +37,7 @@ boxes = [
 # Shape of the heatmap
 shape = (600, 800)
 
-# Calculate the heatmap, an np.ndarray of shape (600, 800)
+# Calculate the heatmap, an np.ndarray of shape (600, 800) and type i64
 heatmap = heatmapcalc(boxes, shape)
 ```
 
@@ -50,4 +50,3 @@ This is shown in [the example script](examples/simple.py).
 workflow on GitHub with the latest commit tag. The workflow builds and uploads
 the wheels for Linux and MacOS.
 - _Test_: Test with `pytest`.
-
