@@ -38,6 +38,7 @@ boxes = [
 shape = (600, 800)
 
 # Calculate the heatmap, an np.ndarray of shape (600, 800) and type i64
+# Note: The output is NOT normalized - values represent raw overlap counts
 heatmap = heatmapcalc(boxes, shape)
 ```
 
