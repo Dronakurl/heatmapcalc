@@ -9,7 +9,7 @@ name = "heatmapcalc"
 crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = "0.22.3"
+pyo3 = "0.25"
 # pyo3 = { version = "0.22", features = ["extension-module"] }
 # ndarray = "0.16.1"
 # numpy = "0.22"
