@@ -13,3 +13,6 @@ wheels/
 target
 .pdb-pyhist
 .archive
+
+# Environment files with secrets
+.env
