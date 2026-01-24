@@ -16,14 +16,13 @@ dependencies = ["numpy"]
 [tool.maturin]
 features = ["pyo3/extension-module"]
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
   "pytest>=8",
   "maturin>=1.7.4",
   "pip>=24.2",
   "opencv-python>=4.10.0.84",
 ]
-environments = ["sys_platform == 'linux'"]
 
 [tool.pytest.ini_options]
 minversion = "8.0"
